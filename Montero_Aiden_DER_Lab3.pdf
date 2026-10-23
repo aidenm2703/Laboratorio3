@@ -1,0 +1,177 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 4997 >>
+stream
+q
+0.16 0.30 0.46 rg
+BT /F1 22 Tf 28 855 Td (DER - Sistema de inventario aduanero | Aiden Montero Perez) Tj ET
+0.1 0.1 0.1 RG 1.3 w
+270 760 m 895 760 l S
+BT /F1 10 Tf 582.5 765 Td (1:N importador) Tj ET
+560 750 m 895 750 l S
+BT /F1 10 Tf 727.5 755 Td (1:N agente) Tj ET
+270 730 m 895 730 l S
+BT /F1 10 Tf 582.5 735 Td (1:N pais) Tj ET
+1140 760 m 1185 760 l S
+BT /F1 10 Tf 1162.5 765 Td (1:N) Tj ET
+270 535 m 315 535 l S
+BT /F1 10 Tf 292.5 540 Td (1:N) Tj ET
+560 515 m 605 515 l S
+BT /F1 10 Tf 582.5 520 Td (1:N) Tj ET
+1017 700 m 727 595 l S
+BT /F1 10 Tf 872 652.5 Td (1:N) Tj ET
+727 475 m 895 535 l S
+BT /F1 10 Tf 811 510 Td (1:N inventario) Tj ET
+1017 475 m 1185 535 l S
+BT /F1 10 Tf 1101 510 Td (1:N inventario) Tj ET
+1017 700 m 1017 595 l S
+BT /F1 10 Tf 1017 652.5 Td (1:N) Tj ET
+1017 700 m 438 370 l S
+BT /F1 10 Tf 727.5 540 Td (1:N inspeccion) Tj ET
+270 310 m 315 310 l S
+BT /F1 10 Tf 292.5 315 Td (1:N recursiva supervisor) Tj ET
+560 495 m 895 730 l S
+BT /F1 10 Tf 727.5 617.5 Td (N:M resuelta por detalle_declaracion) Tj ET
+560 480 m 605 535 l S
+BT /F1 10 Tf 582.5 512.5 Td (1:N) Tj ET
+560 470 m 605 310 l S
+BT /F1 10 Tf 582.5 395 Td (1:N) Tj ET
+0.89 0.93 0.96 rg
+25 700 245 120 re f
+0.12 0.25 0.38 RG
+25 700 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 33 801 Td (pais) Tj ET
+BT /F1 9 Tf 33 782 Td (PK id_pais SERIAL) Tj ET
+BT /F1 9 Tf 33 765 Td (nombre, codigo_iso, continente) Tj ET
+0.89 0.93 0.96 rg
+315 700 245 120 re f
+0.12 0.25 0.38 RG
+315 700 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 323 801 Td (importador) Tj ET
+BT /F1 9 Tf 323 782 Td (PK id_importador SERIAL) Tj ET
+BT /F1 9 Tf 323 765 Td (razon_social, nit_ruc, direccion, telefono, correo) Tj ET
+0.89 0.93 0.96 rg
+605 700 245 120 re f
+0.12 0.25 0.38 RG
+605 700 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 613 801 Td (agente_aduanal) Tj ET
+BT /F1 9 Tf 613 782 Td (PK id_agente SERIAL) Tj ET
+BT /F1 9 Tf 613 765 Td (nombre, licencia, telefono, correo) Tj ET
+0.89 0.93 0.96 rg
+895 700 245 120 re f
+0.12 0.25 0.38 RG
+895 700 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 903 801 Td (declaracion) Tj ET
+BT /F1 9 Tf 903 782 Td (PK id_declaracion SERIAL) Tj ET
+BT /F1 9 Tf 903 765 Td (numero, fecha, regimen, estado, valor_total_declarado) Tj ET
+BT /F1 9 Tf 903 748 Td (FK id_importador, id_agente, id_pais_origen) Tj ET
+0.89 0.93 0.96 rg
+1185 700 245 120 re f
+0.12 0.25 0.38 RG
+1185 700 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 1193 801 Td (contenedor) Tj ET
+BT /F1 9 Tf 1193 782 Td (PK id_contenedor SERIAL) Tj ET
+BT /F1 9 Tf 1193 765 Td (numero, tipo, peso_kg, FK id_declaracion) Tj ET
+0.89 0.93 0.96 rg
+25 475 245 120 re f
+0.12 0.25 0.38 RG
+25 475 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 33 576 Td (partida_arancelaria) Tj ET
+BT /F1 9 Tf 33 557 Td (PK id_partida SERIAL) Tj ET
+BT /F1 9 Tf 33 540 Td (codigo, descripcion, porcentaje_arancel) Tj ET
+0.89 0.93 0.96 rg
+315 475 245 120 re f
+0.12 0.25 0.38 RG
+315 475 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 323 576 Td (producto) Tj ET
+BT /F1 9 Tf 323 557 Td (PK id_producto SERIAL) Tj ET
+BT /F1 9 Tf 323 540 Td (descripcion, unidad_medida, valor_unitario) Tj ET
+BT /F1 9 Tf 323 523 Td (FK id_partida) Tj ET
+0.89 0.93 0.96 rg
+605 475 245 120 re f
+0.12 0.25 0.38 RG
+605 475 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 613 576 Td (detalle_declaracion) Tj ET
+BT /F1 9 Tf 613 557 Td (PK id_detalle SERIAL) Tj ET
+BT /F1 9 Tf 613 540 Td (FK id_declaracion, FK id_producto) Tj ET
+BT /F1 9 Tf 613 523 Td (cantidad, valor_declarado) Tj ET
+0.89 0.93 0.96 rg
+895 475 245 120 re f
+0.12 0.25 0.38 RG
+895 475 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 903 576 Td (bodega) Tj ET
+BT /F1 9 Tf 903 557 Td (PK id_bodega SERIAL) Tj ET
+BT /F1 9 Tf 903 540 Td (nombre, ubicacion, capacidad) Tj ET
+0.89 0.93 0.96 rg
+1185 475 245 120 re f
+0.12 0.25 0.38 RG
+1185 475 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 1193 576 Td (inventario) Tj ET
+BT /F1 9 Tf 1193 557 Td (PK compuesta id_bodega, id_producto, id_declaracion) Tj ET
+BT /F1 9 Tf 1193 540 Td (cantidad, fecha_ingreso, estado) Tj ET
+0.89 0.93 0.96 rg
+25 250 245 120 re f
+0.12 0.25 0.38 RG
+25 250 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 33 351 Td (funcionario) Tj ET
+BT /F1 9 Tf 33 332 Td (PK id_funcionario SERIAL) Tj ET
+BT /F1 9 Tf 33 315 Td (nombre, cargo, correo) Tj ET
+BT /F1 9 Tf 33 298 Td (FK id_supervisor -> funcionario) Tj ET
+0.89 0.93 0.96 rg
+315 250 245 120 re f
+0.12 0.25 0.38 RG
+315 250 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 323 351 Td (inspeccion) Tj ET
+BT /F1 9 Tf 323 332 Td (PK id_inspeccion SERIAL) Tj ET
+BT /F1 9 Tf 323 315 Td (fecha, resultado, observaciones) Tj ET
+BT /F1 9 Tf 323 298 Td (FK id_declaracion, id_funcionario) Tj ET
+0.89 0.93 0.96 rg
+605 250 245 120 re f
+0.12 0.25 0.38 RG
+605 250 245 120 re S
+0 0 0 rg
+BT /F1 13 Tf 613 351 Td (movimiento_inventario) Tj ET
+BT /F1 9 Tf 613 332 Td (PK id_movimiento SERIAL) Tj ET
+BT /F1 9 Tf 613 315 Td (tipo, fecha, cantidad) Tj ET
+BT /F1 9 Tf 613 298 Td (FK id_producto, id_bodega, id_declaracion) Tj ET
+BT /F1 10 Tf 28 35 Td (PK = llave primaria; FK = llave foranea. cardinalidad 1:N y puente N:M mostrados; detalle_declaracion tiene UNIQUE declaracion-producto.) Tj ET
+Q
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 1400 900] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+5 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000005128 00000 n 
+0000005255 00000 n 
+0000005312 00000 n 
+trailer
+<< /Size 6 /Root 5 0 R >>
+startxref
+5361
+%%EOF

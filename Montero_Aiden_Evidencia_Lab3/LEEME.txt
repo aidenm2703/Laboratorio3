@@ -1,0 +1,1 @@
+Capturas reales pendientes de ejecutar tras importar el flujo y conectarlo a la instancia de PostgreSQL/n8n. No se incluyen capturas simuladas. Guarde aqui las capturas PNG de las ocho pruebas y del flujo configurado. Guia: ../Montero_Aiden_Agente_Lab3.md

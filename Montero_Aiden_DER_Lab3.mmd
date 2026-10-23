@@ -1,0 +1,114 @@
+erDiagram
+    pais {
+        serial id_pais PK
+        varchar_80 nombre
+        char_2 codigo_iso
+        varchar_30 continente
+    }
+    importador {
+        serial id_importador PK
+        varchar_120 razon_social
+        varchar_25 nit_ruc
+        varchar_180 direccion
+        varchar_25 telefono
+        varchar_120 correo
+    }
+    agente_aduanal {
+        serial id_agente PK
+        varchar_120 nombre
+        varchar_30 licencia
+        varchar_25 telefono
+        varchar_120 correo
+    }
+    partida_arancelaria {
+        serial id_partida PK
+        varchar_12 codigo
+        varchar_180 descripcion
+        numeric_5_2 porcentaje_arancel
+    }
+    producto {
+        serial id_producto PK
+        varchar_150 descripcion
+        varchar_20 unidad_medida
+        numeric_12_2 valor_unitario
+        integer id_partida FK
+    }
+    bodega {
+        serial id_bodega PK
+        varchar_80 nombre
+        varchar_120 ubicacion
+        integer capacidad
+    }
+    funcionario {
+        serial id_funcionario PK
+        varchar_120 nombre
+        varchar_60 cargo
+        integer id_supervisor FK
+        varchar_120 correo
+    }
+    declaracion {
+        serial id_declaracion PK
+        varchar_25 numero
+        date fecha
+        varchar_15 regimen
+        varchar_15 estado
+        numeric_14_2 valor_total_declarado
+        integer id_importador FK
+        integer id_agente FK
+        integer id_pais_origen FK
+    }
+    detalle_declaracion {
+        serial id_detalle PK
+        integer id_declaracion FK
+        integer id_producto FK
+        numeric_12_2 cantidad
+        numeric_14_2 valor_declarado
+    }
+    contenedor {
+        serial id_contenedor PK
+        varchar_20 numero
+        varchar_20 tipo
+        numeric_12_2 peso_kg
+        integer id_declaracion FK
+    }
+    inventario {
+        integer id_bodega PK
+        integer id_producto PK
+        numeric_12_2 cantidad
+        date fecha_ingreso
+        varchar_12 estado
+        integer id_declaracion PK
+    }
+    movimiento_inventario {
+        serial id_movimiento PK
+        varchar_10 tipo
+        timestamp fecha
+        numeric_12_2 cantidad
+        integer id_producto FK
+        integer id_bodega FK
+        integer id_declaracion FK
+    }
+    inspeccion {
+        serial id_inspeccion PK
+        date fecha
+        varchar_25 resultado
+        text observaciones
+        integer id_declaracion FK
+        integer id_funcionario FK
+    }
+    pais ||--o{ declaracion : id_pais_origen
+    importador ||--o{ declaracion : id_importador
+    agente_aduanal ||--o{ declaracion : id_agente
+    partida_arancelaria ||--o{ producto : id_partida
+    declaracion ||--o{ detalle_declaracion : id_declaracion
+    producto ||--o{ detalle_declaracion : id_producto
+    declaracion ||--o{ contenedor : id_declaracion
+    bodega ||--o{ inventario : id_bodega
+    producto ||--o{ inventario : id_producto
+    declaracion ||--o{ inventario : id_declaracion
+    producto ||--o{ movimiento_inventario : id_producto
+    bodega ||--o{ movimiento_inventario : id_bodega
+    declaracion ||--o{ movimiento_inventario : id_declaracion
+    declaracion ||--o{ inspeccion : id_declaracion
+    funcionario ||--o{ inspeccion : id_funcionario
+    funcionario ||--o{ funcionario : id_supervisor

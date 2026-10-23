@@ -1,0 +1,99 @@
+// dbdiagram.io DBML | Aiden Montero Perez | PK/FK acorde a SQL
+Table pais {
+  id_pais serial [pk]
+  nombre varchar(80) [unique]
+  codigo_iso char(2) [unique]
+  continente varchar(30)
+}
+Table importador {
+  id_importador serial [pk]
+  razon_social varchar(120)
+  nit_ruc varchar(25) [unique]
+  direccion varchar(180)
+  telefono varchar(25)
+  correo varchar(120) [unique]
+}
+Table agente_aduanal {
+  id_agente serial [pk]
+  nombre varchar(120)
+  licencia varchar(30) [unique]
+  telefono varchar(25)
+  correo varchar(120) [unique]
+}
+Table partida_arancelaria {
+  id_partida serial [pk]
+  codigo varchar(12) [unique]
+  descripcion varchar(180)
+  porcentaje_arancel numeric(5,2)
+}
+Table producto {
+  id_producto serial [pk]
+  descripcion varchar(150) [unique]
+  unidad_medida varchar(20)
+  valor_unitario numeric(12,2)
+  id_partida integer [ref: > partida_arancelaria.id_partida]
+}
+Table bodega {
+  id_bodega serial [pk]
+  nombre varchar(80) [unique]
+  ubicacion varchar(120)
+  capacidad integer
+}
+Table funcionario {
+  id_funcionario serial [pk]
+  nombre varchar(120)
+  cargo varchar(60)
+  id_supervisor integer [ref: > funcionario.id_funcionario]
+  correo varchar(120) [unique]
+}
+Table declaracion {
+  id_declaracion serial [pk]
+  numero varchar(25) [unique]
+  fecha date
+  regimen varchar(15)
+  estado varchar(15)
+  valor_total_declarado numeric(14,2)
+  id_importador integer [ref: > importador.id_importador]
+  id_agente integer [ref: > agente_aduanal.id_agente]
+  id_pais_origen integer [ref: > pais.id_pais]
+}
+Table detalle_declaracion {
+  id_detalle serial [pk]
+  id_declaracion integer [ref: > declaracion.id_declaracion]
+  id_producto integer [ref: > producto.id_producto]
+  cantidad numeric(12,2)
+  valor_declarado numeric(14,2)
+  indexes { (id_declaracion, id_producto) [unique] }
+}
+Table contenedor {
+  id_contenedor serial [pk]
+  numero varchar(20) [unique]
+  tipo varchar(20)
+  peso_kg numeric(12,2)
+  id_declaracion integer [ref: > declaracion.id_declaracion]
+}
+Table inventario {
+  id_bodega integer [pk, ref: > bodega.id_bodega]
+  id_producto integer [pk, ref: > producto.id_producto]
+  cantidad numeric(12,2)
+  fecha_ingreso date
+  estado varchar(12)
+  id_declaracion integer [pk, ref: > declaracion.id_declaracion]
+}
+Table movimiento_inventario {
+  id_movimiento serial [pk]
+  tipo varchar(10)
+  fecha timestamp
+  cantidad numeric(12,2)
+  id_producto integer [ref: > producto.id_producto]
+  id_bodega integer [ref: > bodega.id_bodega]
+  id_declaracion integer [ref: > declaracion.id_declaracion]
+}
+Table inspeccion {
+  id_inspeccion serial [pk]
+  fecha date
+  resultado varchar(25)
+  observaciones text
+  id_declaracion integer [ref: > declaracion.id_declaracion]
+  id_funcionario integer [ref: > funcionario.id_funcionario]
+}

@@ -1,0 +1,361 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 2843 >>
+stream
+BT
+/F1 17 Tf
+50 790 Td
+(Bases de datos relacionales y SQL) Tj
+/F1 9 Tf
+0 -24 Td
+(Laboratorio #3 - Sistema de inventario aduanero) Tj
+0 -14 Td
+(Aiden Montero Perez | Trabajo individual | 2026) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Una base de datos organiza datos relacionados para consultarlos y actualizarlos de forma) Tj
+0 -14 Td
+(controlada. El SGBD es el programa que define estructuras, valida reglas, administra) Tj
+0 -14 Td
+(concurrencia, permisos y recuperacion. En la aduana, separar importadores, productos y) Tj
+0 -14 Td
+(declaraciones evita copiar los mismos datos en cada registro y ayuda a rastrear un) Tj
+0 -14 Td
+(cargamento.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Relacional y NoSQL. En el modelo relacional los datos se guardan en tablas con columnas) Tj
+0 -14 Td
+(definidas y relaciones mediante llaves. SQL permite combinar y resumir esas tablas. Una) Tj
+0 -14 Td
+(base NoSQL puede guardar documentos, pares clave-valor, grafos u otros formatos) Tj
+0 -14 Td
+(flexibles; resulta util cuando los datos cambian de forma o la escala exige) Tj
+0 -14 Td
+(distribuirlos. Para inventario aduanero las relaciones y reglas de integridad son) Tj
+0 -14 Td
+(centrales, por eso conviene un modelo relacional.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Tabla, fila, columna y tipos. Una tabla representa un tipo de entidad; la fila es una) Tj
+0 -14 Td
+(ocurrencia y la columna una propiedad. En producto, una fila puede representar "Telefono) Tj
+0 -14 Td
+(inteligente X1"; id_producto es INTEGER, descripcion VARCHAR, cantidad NUMERIC y fecha) Tj
+0 -14 Td
+(DATE. Elegir el tipo correcto evita comparar fechas como texto o perder decimales de) Tj
+0 -14 Td
+(dinero.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Llaves. La PK identifica cada fila sin repetirse. La FK apunta a una PK de otra tabla y) Tj
+0 -14 Td
+(evita referencias inexistentes. Una llave compuesta usa varias columnas: inventario se) Tj
+0 -14 Td
+(identifica por \(id_bodega, id_producto, id_declaracion\), pues un mismo producto puede) Tj
+0 -14 Td
+(aparecer en diferentes bodegas y declaraciones.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Relaciones. 1:1 se implementa con FK UNIQUE \(por ejemplo, una tarjeta por persona\); 1:N) Tj
+0 -14 Td
+(guarda la FK en el lado "muchos" \(un pais tiene muchas declaraciones\); N:M requiere una) Tj
+0 -14 Td
+(tabla intermedia. detalle_declaracion enlaza declaraciones con productos y agrega) Tj
+0 -14 Td
+(cantidad y valor declarado.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Integridad. NOT NULL exige dato; UNIQUE evita duplicados; CHECK valida rangos o estados) Tj
+0 -14 Td
+(permitidos; DEFAULT asigna un valor si no se indica. FK conserva integridad referencial:) Tj
+0 -14 Td
+(no se puede asignar a una declaracion un importador inexistente. Estas reglas son) Tj
+0 -14 Td
+(aplicadas por PostgreSQL al escribir.) Tj
+0 -14 Td
+0 -18 Td
+/F1 8 Tf
+(Pagina 1 de 4 | Aiden Montero Perez | Laboratorio 3 - 2026) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Length 2641 >>
+stream
+BT
+/F1 17 Tf
+50 790 Td
+(SQL, normalizacion y diagramas) Tj
+/F1 9 Tf
+0 -24 Td
+(DDL describe estructuras y DML trabaja con los registros. CREATE TABLE crea una tabla) Tj
+0 -14 Td
+(\(DDL\); INSERT agrega una fila, SELECT consulta, UPDATE modifica, DELETE elimina y JOIN) Tj
+0 -14 Td
+(combina datos relacionados \(DML\). Por ejemplo, un JOIN de inventario, producto y bodega) Tj
+0 -14 Td
+(permite saber que articulo esta almacenado y donde. WHERE filtra; GROUP BY agrupa y) Tj
+0 -14 Td
+(COUNT o SUM resume; ORDER BY ordena. En un asistente conectado a produccion, restringir) Tj
+0 -14 Td
+(el rol a SELECT reduce el impacto de un error.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Normalizacion. Primera forma normal \(1FN\): cada celda guarda un valor atomico y no hay) Tj
+0 -14 Td
+(grupos repetidos. Segunda \(2FN\): cada campo no clave depende de toda la llave compuesta,) Tj
+0 -14 Td
+(no solo de una parte. Tercera \(3FN\): un atributo no clave depende de la llave, no de) Tj
+0 -14 Td
+(otro atributo no clave. Por ejemplo, guardar codigo y nombre de pais repetidos en cada) Tj
+0 -14 Td
+(declaracion causa inconsistencias; la tabla pais conserva ese dato una sola vez.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(El diagrama entidad-relacion \(DER\) es el plano del esquema: entidades, atributos, llaves) Tj
+0 -14 Td
+(y relaciones. Chen representa entidades como rectangulos, atributos como ovalos y) Tj
+0 -14 Td
+(relaciones como rombos. Pata de gallo marca cardinalidades con lineas y "patas" para) Tj
+0 -14 Td
+(muchos. En este trabajo, pais 1:N declaracion; funcionario tiene relacion recursiva con) Tj
+0 -14 Td
+(su supervisor, y detalle_declaracion resuelve la relacion N:M declaracion-producto.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Gestores comparados. SQLite es una biblioteca embebida, sin servidor y suele guardar) Tj
+0 -14 Td
+(toda la base en un solo archivo; es muy sencilla para aprender o para una app local.) Tj
+0 -14 Td
+(MySQL usa arquitectura cliente-servidor y es popular para aplicaciones web; ofrece) Tj
+0 -14 Td
+(amplia disponibilidad de herramientas y hosting. PostgreSQL tambien es cliente-servidor,) Tj
+0 -14 Td
+(con tipos y restricciones robustas y un nodo Postgres en n8n. Elegi PostgreSQL porque) Tj
+0 -14 Td
+(este laboratorio requiere integridad relacional, rol de solo lectura y conexion directa) Tj
+0 -14 Td
+(desde n8n; Supabase y Neon son opciones hospedadas mencionadas en el enunciado.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fuentes tecnicas: PostgreSQL, "Constraints" y "GRANT"; SQLite, "About SQLite"; MySQL 8.4) Tj
+0 -14 Td
+(Reference Manual, "What is MySQL?".) Tj
+0 -14 Td
+0 -18 Td
+/F1 8 Tf
+(Pagina 2 de 4 | Aiden Montero Perez | Laboratorio 3 - 2026) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2589 >>
+stream
+BT
+/F1 17 Tf
+50 790 Td
+(n8n y agentes de IA) Tj
+/F1 9 Tf
+0 -24 Td
+(n8n es una plataforma para conectar servicios mediante workflows. Un workflow es una) Tj
+0 -14 Td
+(secuencia de nodos: cada nodo ejecuta una tarea. Un trigger inicia el flujo ante un) Tj
+0 -14 Td
+(evento; una credencial guarda datos de conexion de forma administrada. En el) Tj
+0 -14 Td
+(laboratorio, Chat Trigger recibe la pregunta y AI Agent determina si necesita consultar) Tj
+0 -14 Td
+(datos.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Un chatbot normal suele responder siguiendo dialogo o reglas. Un agente puede decidir) Tj
+0 -14 Td
+(llamar una herramienta, observar el resultado y redactar una respuesta. El LLM) Tj
+0 -14 Td
+(interpreta el lenguaje y genera texto; una herramienta le permite actuar, por ejemplo) Tj
+0 -14 Td
+(ejecutar SQL. Simple Memory conserva parte del contexto de una conversacion para) Tj
+0 -14 Td
+(responder seguimientos.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Flujo propuesto: Chat Trigger -> AI Agent, conectado ademas a un Chat Model, Simple) Tj
+0 -14 Td
+(Memory y Postgres como AI Tool. La herramienta se configura con usuario de solo lectura.) Tj
+0 -14 Td
+(PostgreSQL debe otorgar CONNECT, USAGE sobre el esquema y SELECT sobre tablas actuales y) Tj
+0 -14 Td
+(futuras; no se otorga escritura. Las instrucciones del prompt indican SELECT, pero la) Tj
+0 -14 Td
+(proteccion efectiva es el permiso del servidor: un prompt por si solo no es una barrera) Tj
+0 -14 Td
+(de seguridad. Las credenciales se ingresan en n8n y se omiten del JSON exportado.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Caso aduanero. La aduana controla la entrada y salida de mercancias. La declaracion) Tj
+0 -14 Td
+(registra regimen, origen, importador, valor y estado. Una partida arancelaria clasifica) Tj
+0 -14 Td
+(mercancias bajo el Sistema Armonizado; el arancel es un tributo que puede aplicarse a la) Tj
+0 -14 Td
+(importacion conforme a la normativa nacional. El codigo HS armoniza categorias) Tj
+0 -14 Td
+(internacionales, pero cada pais agrega aperturas y tasas nacionales, por lo que los) Tj
+0 -14 Td
+(porcentajes de prueba no sustituyen una liquidacion oficial.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Regimenes incluidos en el esquema: importacion, exportacion, transito y deposito. Un) Tj
+0 -14 Td
+(agente aduanal representa o asesora al importador en tramites y clasificacion, conforme) Tj
+0 -14 Td
+(a las reglas aplicables. Contenedores, bodega, inventario, movimientos e inspecciones) Tj
+0 -14 Td
+(ayudan a seguir el recorrido y la custodia de la carga.) Tj
+0 -14 Td
+0 -18 Td
+/F1 8 Tf
+(Pagina 3 de 4 | Aiden Montero Perez | Laboratorio 3 - 2026) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2652 >>
+stream
+BT
+/F1 17 Tf
+50 790 Td
+(Uso de IA y fuentes) Tj
+/F1 9 Tf
+0 -24 Td
+(Uso de IA) Tj
+0 -14 Td
+(Utilice ChatGPT como apoyo para traducir los requisitos del enunciado a un modelo de) Tj
+0 -14 Td
+(tablas, explicar llaves y relaciones, proponer consultas y revisar consistencia entre) Tj
+0 -14 Td
+(SQL y el prompt. La IA no reemplaza ejecutar el script ni verificar las respuestas) Tj
+0 -14 Td
+(contra PostgreSQL.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Ejemplos de prompts utilizados:) Tj
+0 -14 Td
+(- "Explicame PK, FK y relacion N:M con un ejemplo de una declaracion aduanera".) Tj
+0 -14 Td
+(- "Revisa si este esquema PostgreSQL permite saber que mercancias retenidas estan en) Tj
+0 -14 Td
+(cada bodega; verifica las FK y la llave de inventario".) Tj
+0 -14 Td
+(- "Escribe una consulta SELECT con JOIN y GROUP BY para ordenar los paises por) Tj
+0 -14 Td
+(contenedores recibidos".) Tj
+0 -14 Td
+(- "Ayudame a crear un agente n8n que consulte PostgreSQL con privilegios de solo) Tj
+0 -14 Td
+(lectura; no incluyas credenciales".) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Aprendizajes: un modelo puede proponer codigo rapido, pero hay que comprobar que nombres) Tj
+0 -14 Td
+(de columnas coincidan, que las filas respeten las FK y que estados y fechas tengan) Tj
+0 -14 Td
+(sentido. Aprendi que limitar permisos en el propio SGBD protege mejor que confiar) Tj
+0 -14 Td
+(unicamente en instrucciones del agente. Tambien comprendi que las tablas intermedias) Tj
+0 -14 Td
+(permiten guardar atributos propios de una relacion, como cantidad declarada por) Tj
+0 -14 Td
+(producto.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fuentes consultadas \(consulta: 23 octubre 2026\):) Tj
+0 -14 Td
+(1. PostgreSQL, Constraints: https://www.postgresql.org/docs/current/ddl-constraints.html) Tj
+0 -14 Td
+(2. PostgreSQL, GRANT: https://www.postgresql.org/docs/current/sql-grant.html) Tj
+0 -14 Td
+(3. PostgreSQL, SELECT: https://www.postgresql.org/docs/current/sql-select.html) Tj
+0 -14 Td
+(4. SQLite, About SQLite: https://www.sqlite.org/about.html) Tj
+0 -14 Td
+(5. MySQL 8.4, What is MySQL?: https://dev.mysql.com/doc/refman/8.4/en/what-is-mysql.html) Tj
+0 -14 Td
+(6. World Customs Organization, Harmonized System FAQ:) Tj
+0 -14 Td
+(https://www.wcoomd.org/en/faq/harmonized_system_faq.aspx) Tj
+0 -14 Td
+(7. n8n Documentation, AI and integrations: https://docs.n8n.io/) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(El esquema y los registros son un ejemplo academico. En una implementacion real se) Tj
+0 -14 Td
+(definirian moneda, calendario aduanero, reglas nacionales de clasificacion, auditoria y) Tj
+0 -14 Td
+(trazabilidad con especialistas.) Tj
+0 -14 Td
+0 -18 Td
+/F1 8 Tf
+(Pagina 4 de 4 | Aiden Montero Perez | Laboratorio 3 - 2026) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
+endobj
+11 0 obj
+<< /Type /Catalog /Pages 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000002974 00000 n 
+0000003101 00000 n 
+0000005794 00000 n 
+0000005921 00000 n 
+0000008562 00000 n 
+0000008689 00000 n 
+0000011393 00000 n 
+0000011520 00000 n 
+0000011596 00000 n 
+trailer
+<< /Size 12 /Root 11 0 R >>
+startxref
+11647
+%%EOF
